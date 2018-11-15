@@ -1,0 +1,112 @@
+users collection
+    
+    {
+        firstname,
+        lastname,
+        email,
+        password,
+        DOB (date),
+        gender,
+        image,
+        created_at,
+        updated_at,
+        friends [
+          {userID},
+          {userID}
+        ]
+        pagesIN: [pageid , pageid2]
+        pages:[],
+        groups:[],
+        groupsIN:[]
+    }
+    
+friendreqs collection
+  
+    {
+        user,
+        requesteduser
+        created_at
+    }
+    
+activities collection
+    
+    {
+        userid,
+        body,
+        image (if exists)
+        created_at,
+        updated_at,
+        comments: [
+          { comment , createdat , updatedat }
+        ],
+        
+        likes: [userid],
+        shares : [userid],
+    }
+    
+
+newsfeed collection
+    
+    {
+        userid, (if exists)
+        pageid ,(if exists)
+        body,
+        image,
+        createdat
+        updatedat
+    }
+    
+pages collection
+
+    {
+        Adminid
+        pagename
+        about
+        likes:[userid]
+    }
+    
+pagesposts collection
+    
+    {
+        pageid
+        body
+        image
+        comments:[
+        { body , created_at , updated_at }
+        ]
+        likes:[ userid , userid ]
+        shares: [ userid , userid ]
+        created_at
+        updated_at
+    }
+    
+groups collection
+
+    {
+        adminID
+        groupname
+        members :[memberid , memberid ]
+    }
+    
+groupsposts collection
+
+    {
+        memberid
+        groupid
+        body
+        image
+        comments: [
+        { body , createdat , updatedat }
+        ]
+        likes: [userid , userid],
+        shares:[userid , userid],
+        created_at,
+        updated_at
+    }
+    
+notifications collection
+    {
+        userid
+        body
+        createdat
+    }
