@@ -1,35 +1,57 @@
 users collection
-    
+
     {
         firstname,
         lastname,
         email,
         password,
         DOB (date),
-        gender,
-        image,
+        gender, 1 male  2 female
+        avatar, (if exists)
         created_at,
         updated_at,
         friends [
-          {userID},
-          {userID}
+          userID,
+          userID
         ]
-        pagesIN: [pageid , pageid2]
+        pagesIN: [pageid , pageid]
         pages:[],
         groups:[],
         groupsIN:[]
     }
-    
+
+
+chats collection
+
+    {
+    user1id
+    user2id
+    created_at
+    }
+
+messages collection
+
+    {
+    chat_id
+    from_id
+    to_id
+    message
+    from_username
+    to_username
+    created_at
+    }
+
 friendreqs collection
-  
+
     {
         user,
-        requesteduser
+        requesteduser,
+        answer, ( 1 yes , 0 no )
         created_at
     }
-    
+
 activities collection
-    
+
     {
         userid,
         body,
@@ -37,25 +59,30 @@ activities collection
         created_at,
         updated_at,
         comments: [
-          { comment , createdat , updatedat }
+          { body , createdat , updatedat }
         ],
-        
+
         likes: [userid],
         shares : [userid],
     }
-    
+
 
 newsfeed collection
-    
+
     {
         userid, (if exists)
         pageid ,(if exists)
+        activity_id, (if exists)
+        pagepost_id, (if exists)
         body,
-        image,
+        image, if exists
+        comments,
+        likes,
+        shares,
         createdat
         updatedat
     }
-    
+
 pages collection
 
     {
@@ -64,13 +91,13 @@ pages collection
         about
         likes:[userid]
     }
-    
-pagesposts collection
-    
+
+pageposts collection
+
     {
         pageid
         body
-        image
+        image (if exists)
         comments:[
         { body , created_at , updated_at }
         ]
@@ -79,22 +106,33 @@ pagesposts collection
         created_at
         updated_at
     }
-    
+
 groups collection
 
     {
         adminID
-        groupname
+        name
+        about
         members :[memberid , memberid ]
     }
-    
-groupsposts collection
+
+groupreqs
+
+    {
+        group_id
+        user_id
+        answer ( 1 yes , 0 no )
+        created_at
+        updated_at
+    }
+
+groupposts collection
 
     {
         memberid
         groupid
         body
-        image
+        image (if exists)
         comments: [
         { body , createdat , updatedat }
         ]
@@ -103,7 +141,7 @@ groupsposts collection
         created_at,
         updated_at
     }
-    
+
 notifications collection
     {
         userid

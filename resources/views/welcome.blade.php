@@ -1,3 +1,4 @@
+@extends('layouts.app')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -94,5 +95,16 @@
                 </div>
             </div>
         </div>
+@section('content')
+        <div id="app2">
+
+        </div>
+
+        <script>
+            var app = new Vue({
+                el:"#app2"
+            })
+        </script>
+@endsection
     </body>
 </html>
